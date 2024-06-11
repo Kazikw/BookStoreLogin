@@ -12,3 +12,4 @@ public class BookstoreApplication {
 
 }
 //TODo user password    <--- login i haslo
+// admin admin1234
