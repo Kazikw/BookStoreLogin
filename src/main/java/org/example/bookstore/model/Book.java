@@ -26,4 +26,10 @@ public class Book {
     public Book(int id) {
         this.id = id;
     }
+    public Book(String title, String author, BigDecimal price, int quantity) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+        this.quantity = quantity;
+    }
 }

@@ -2,6 +2,7 @@ package org.example.bookstore.service;
 
 import jakarta.transaction.Transactional;
 import org.example.bookstore.model.Book;
+import org.example.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,34 +11,31 @@ import java.util.Optional;
 
 @Service
 public class BookService implements IBookService {
-    private final IBookDAO bookDAO;
 
     @Autowired
-    public BookService(IBookDAO bookDAO) {
-        this.bookDAO = bookDAO;
-    }
+    private BookRepository bookRepository;
 
     @Override
     @Transactional
     public Optional<Book> getById(int id) {
-        return bookDAO.getById(id);
+        return bookRepository.findById(id);
     }
 
     @Override
     @Transactional
     public List<Book> getAll() {
-        return bookDAO.getAll();
+        return bookRepository.findAll();
     }
 
     @Override
     @Transactional
     public void saveOrUpdate(Book book) {
-        bookDAO.saveOrUpdate(book);
+        bookRepository.save(book);
     }
 
     @Override
     @Transactional
     public void delete(int id) {
-        bookDAO.delete(id);
+        bookRepository.deleteById(id);
     }
 }
